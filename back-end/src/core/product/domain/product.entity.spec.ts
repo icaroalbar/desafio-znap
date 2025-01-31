@@ -31,8 +31,7 @@ describe("Product Entity", () => {
   it("should change name and price correctly", () => {
     const product = new Product({ name: "Produto D", price: 150 });
 
-    product.changeName("Produto E");
-    product.changePrice(200.99);
+    product.updateField("Produto E", 200.99);
 
     expect(product.getId()).toBeDefined();
     expect(product.getName()).toBe("Produto E");
@@ -42,17 +41,17 @@ describe("Product Entity", () => {
   it("should throw error when changing name to empty string", () => {
     const product = new Product({ name: "Produto F", price: 120 });
 
-    expect(() => product.changeName("")).toThrow(
+    expect(() => product.updateField("")).toThrow(
       "Nome do produto não pode ser vazio."
     );
   });
 
   it("should throw error when changing price to zero or negative", () => {
     const product = new Product({ name: "Produto G", price: 130 });
-    expect(() => product.changePrice(0)).toThrow(
+    expect(() => product.updateField(undefined, 0)).toThrow(
       "Preço do produto é obrigatório e não pode ser menor ou igual a zero."
     );
-    expect(() => product.changePrice(-5)).toThrow(
+    expect(() => product.updateField(undefined, -5)).toThrow(
       "Preço do produto é obrigatório e não pode ser menor ou igual a zero."
     );
   });

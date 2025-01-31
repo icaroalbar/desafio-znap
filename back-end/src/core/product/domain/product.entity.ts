@@ -32,12 +32,22 @@ export class Product {
     return this._product.price;
   }
 
-  changeName(newName: string): void {
+  updateField(newName?: string, newPrice?: number): void {
+    if (newName !== undefined) {
+      this.changeName(newName);
+    }
+
+    if (newPrice !== undefined) {
+      this.changePrice(newPrice);
+    }
+  }
+
+  private changeName(newName: string): void {
     ProductValidator.validateName(newName);
     this._product.name = newName;
   }
 
-  changePrice(newPrice: number): void {
+  private changePrice(newPrice: number): void {
     ProductValidator.validatePrice(newPrice);
     this._product.price = this.formatPrice(newPrice);
   }
