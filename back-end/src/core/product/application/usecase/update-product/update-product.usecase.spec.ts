@@ -1,31 +1,7 @@
-import { ProductGateway } from "../../product.gateway";
 import { Product } from "@core/product/domain/product.entity";
 import { UpdateProductInputDto } from "./update-product.dto";
 import { UpdateProductUseCase } from "./update-product.usecase";
-
-class ProductRepositoryMock implements ProductGateway {
-  private products: Product[] = [];
-
-  async create(product: Product): Promise<Product> {
-    this.products.push(product);
-    return product;
-  }
-
-  async findById(id: string): Promise<Product> {
-    const product = this.products.find((prod) => prod.getId() === id);
-    if (!product) throw new Error("Produto não encontrado.");
-    return product;
-  }
-
-  async update(product: Product): Promise<Product> {
-    const index = this.products.findIndex(
-      (prod) => prod.getId() === product.getId()
-    );
-    if (index === -1) throw new Error("Produto não encontrado.");
-    this.products[index] = product;
-    return product;
-  }
-}
+import { ProductRepositoryMock } from "../product.repository.mock";
 
 describe("UpdateProductUseCase", () => {
   let useCase: UpdateProductUseCase;

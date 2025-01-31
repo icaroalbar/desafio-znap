@@ -11,6 +11,7 @@ describe("CreateProductUseCase", () => {
       create: jest.fn(async (product) => product),
       findById: jest.fn(),
       update: jest.fn(),
+      delete: jest.fn(),
     };
     useCase = new CreateProductUseCase(productRepository);
   });
