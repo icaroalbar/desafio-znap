@@ -39,4 +39,14 @@ export class Client {
     ClientValidator.validateEmail(newEmail);
     this._client.email = newEmail;
   }
+
+  updateField(newName?: string, newEmail?: string): void {
+    if (newName !== undefined) {
+      this.changeName(newName);
+    }
+
+    if (newEmail !== undefined) {
+      this.changeEmail(newEmail);
+    }
+  }
 }

@@ -10,6 +10,7 @@ describe("CreateProductUseCase", () => {
     productRepository = {
       create: jest.fn(async (product) => product),
       findById: jest.fn(),
+      findAll: jest.fn(),
       update: jest.fn(),
       delete: jest.fn(),
     };

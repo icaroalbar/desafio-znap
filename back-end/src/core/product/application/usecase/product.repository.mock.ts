@@ -32,4 +32,8 @@ export class ProductRepositoryMock implements ProductGateway {
       throw new Error("Produto não encontrado.");
     }
   }
+
+  async findAll(): Promise<Product[]> {
+    return this.products;
+  }
 }
